@@ -1,0 +1,9 @@
+$background-color: #4C87C1;
+$secondary-color: #144FC6;
+$font-stack : 'Montserrat',sans-serif;
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,66 @@
+@import './variables';
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: $font-stack;
+    background-color: $background-color;
+    color: white;
+    height: 100vh;
+    @include flex-center;
+}
+
+.app-container{
+    @include flex-center;
+    margin: 0 10%;
+}
+.set-amount{
+    h1{
+        text-align: center;
+    }
+}
+.submit{
+    @include flex-center;
+    margin-top: 1.5rem;
+    input{
+        border-radius: 15%;
+        border: 2px solid white;
+        width: 90px;
+        height: 70px;
+        text-align: center;
+        font-size: 1.75rem;
+    
+        color: $background-color;
+        margin-right: 1rem; 
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        padding: 5px;
+        border-radius: 100%;
+        border: none;
+        background-color: white;
+        color: $secondary-color;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.2);
+        }
+        &:focus{
+            outline: none;
+        }
+
+        &:active{
+            border: white;
+            background-color: $secondary-color;
+            color: white;
+        }
+    }
+    
+    
+}
