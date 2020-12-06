@@ -11,13 +11,32 @@
     <title>Drink Water App</title>
 </head>
 <body>
-    <div class="app-container">
+    <div class="start-app">
         <div class="set-amount">
             <h1>Set the amount of water (in liters) you want to drink daily</h1>
             <div class="submit">
                 <input type="text" maxlength="5">
                 <button class="first-btn"><i class="fas fa-check"></i></button>
+            </div>
         </div>
     </div>
+    <div class="dashboard">
+        <nav>
+            <ul>
+                <li>Statistics</li>
+                <li>History</li>
+                <li>Settings</li>
+            </ul>
+        </nav>
+        <main>
+            <div class="date-container">Today, </div>
+            <div class="water-glass">
+                <div class="amount-remaining"></div>
+                <div class="amount-drank"></div>
+            </div>
+            <button><i class="fas fa-plus-circle"></i></button>
+        </main>
+    </div>
+
 </body>
 </html>

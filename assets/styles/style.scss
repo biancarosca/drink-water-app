@@ -14,13 +14,14 @@ body{
     @include flex-center;
 }
 
-.app-container{
+.start-app{
     @include flex-center;
     margin: 0 10%;
 }
 .set-amount{
     h1{
         text-align: center;
+        animation: fadeIn 0.5s ease-in;
     }
 }
 .submit{
@@ -63,4 +64,41 @@ body{
     }
     
     
+}
+
+.dashboard{
+    nav{
+        animation: fadeIn 0.5s ease-in;
+        width: 80%;
+        margin: 1rem 10%;
+        @include flex-center;
+        ul{
+        display: flex;
+        list-style-type: none;
+        li{
+            margin-right: 1rem;
+        }
+        }
+    }
+}
+
+main{
+    height: 100vh;
+    .water-glass{
+        height: 50%;
+        width: 15%;
+        border: 3px solid white;
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity:0;
+        transform: scale(0.8);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
 }
