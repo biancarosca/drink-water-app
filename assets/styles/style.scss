@@ -7,6 +7,7 @@
 }
 
 body{
+    overflow: hidden;
     font-family: $font-stack;
     background-color: $background-color;
     color: white;
@@ -17,6 +18,7 @@ body{
 .start-app{
     @include flex-center;
     margin: 0 10%;
+    display: none;
 }
 .set-amount{
     h1{
@@ -67,6 +69,7 @@ body{
 }
 
 .dashboard{
+    display: none;
     nav{
         animation: fadeIn 0.5s ease-in;
         width: 80%;
@@ -90,6 +93,14 @@ main{
         border: 3px solid white;
     }
 }
+
+.wave{
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
 
 @keyframes fadeIn{
     0%{

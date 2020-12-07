@@ -1,0 +1,23 @@
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+const getSuffix = (day) => {
+    if(day % 10 === 1)
+        return 'st';
+    else if (day % 10 ===2 )
+        return 'nd';
+    else if (day % 10 ===3)
+        return 'rd';
+    else return 'th';
+}
+
+export const getCurrentDate = () =>{
+    const date = new Date();
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    //write today's date
+    const dateEl = document.querySelector('.date-container');
+    dateEl.innerHTML+= `${day}<sup>${getSuffix(day)}</sup> ${month} ${year}`;
+
+}
