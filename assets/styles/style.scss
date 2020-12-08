@@ -225,3 +225,57 @@ main{
         transform: scale(1);
     }
 }
+
+@media screen and (max-width:800px) {
+    @keyframes wave-anim {
+        0%{
+            background-position-x: 0px;
+        }
+        50%{
+            background-position-x: 300px;
+            
+        }
+        100%{
+             background-position-x:0;
+        }
+    }
+
+    @keyframes wave-anim2 {
+        0%{
+            background-position-x: 0;
+        }
+        50%{
+            background-position-x: -300px;
+        }
+        100%{
+            background-position-x:0;
+       }
+    }
+}
+
+@media screen and (max-width:400px) {
+    @keyframes wave-anim {
+        0%{
+            background-position-x: 0px;
+        }
+        50%{
+            background-position-x: 150px;
+            
+        }
+        100%{
+             background-position-x:0;
+        }
+    }
+
+    @keyframes wave-anim2 {
+        0%{
+            background-position-x: 0;
+        }
+        50%{
+            background-position-x: -150px;
+        }
+        100%{
+            background-position-x:0;
+       }
+    }
+}

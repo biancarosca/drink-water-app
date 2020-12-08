@@ -1,7 +1,7 @@
 import {getDate} from './currentDate.js';
 import {getUserfromLS,saveUserToLS} from './localStorage.js';
 import {waterProgress} from './updateDOM.js';
-
+import {countDecimals} from './utils.js';
 
 export const addWater = () => {
     let user = getUserfromLS();
@@ -19,7 +19,9 @@ export const addWater = () => {
         user.history[todayDateString].amountDrank = 0;
     }
     
+    const numberOfDecimals = countDecimals(user.glassCapacity);
     user.history[todayDateString].amountDrank += user.glassCapacity;
+    user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
     saveUserToLS(user);
 
     waterProgress();

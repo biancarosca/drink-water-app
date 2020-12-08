@@ -1,5 +1,6 @@
 import {switchToMainWindow,switchToSecondWindow} from './inputWindows.js';
 import {saveUserToLS} from './localStorage.js';
+import {countDecimals} from './utils.js';
 
 let user = new Object();
 
@@ -12,7 +13,8 @@ export const submitDailyAmount = () => {
         }
     else{
         user.glassCapacity = parseFloat(input.value);
-        user.percentage = user.glassCapacity * 100 / user.dailyAmount ;
+        const numberOfDecimals = countDecimals(user.glassCapacity);
+        user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(numberOfDecimals)) ;
         saveUserToLS(user);
         switchToMainWindow();
         

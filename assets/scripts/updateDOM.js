@@ -14,7 +14,7 @@ export const waterProgress = () => {
 
     if(user.history && user.history[todayDateString])
     {
-    const percentageDrank = user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity;
+    const percentageDrank = parseFloat((user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity).toFixed(1));
     if(percentageDrank <= 100)
         {wavePacket.style.bottom = `${percentageDrank}vh`;
         bottomWater.style.height = `${percentageDrank}vh`;
