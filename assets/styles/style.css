@@ -96,16 +96,53 @@ body {
   margin-right: 1rem;
 }
 
-main .water-glass {
-  height: 50%;
-  width: 15%;
-  border: 3px solid white;
+main {
+  display: grid;
+  grid-template-rows: 5% 15% 30% 10% 20% 20% 5%;
+  grid-template-columns: 5% 30% 5% 20% 5% 30% 5%;
+  height: 100%;
+}
+
+main .hamburger {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  z-index: 1;
+}
+
+main .date-container {
+  grid-row: 2/3;
+  grid-column: 3/6;
+  text-align: center;
+  justify-self: center;
+  z-index: 1;
+}
+
+main .amount-drank {
+  grid-row: 4/5;
+  grid-column: 4/5;
+  justify-self: center;
+  font-size: 4rem;
+  z-index: 1;
+}
+
+main .add-btn {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  grid-row: 6/7;
+  grid-column: 4/5;
+  z-index: 1;
+  justify-self: center;
 }
 
 .wave-container {
   width: 100%;
   position: absolute;
-  bottom: 20vh;
+  bottom: 40vh;
   left: 0;
 }
 
@@ -146,7 +183,7 @@ main .water-glass {
 .wave-bottom {
   width: 100%;
   background-color: #00bbfb;
-  height: 20vh;
+  height: 40vh;
   position: absolute;
   bottom: 0;
 }
