@@ -10,11 +10,19 @@ const getSuffix = (day) => {
     else return 'th';
 }
 
-export const getCurrentDate = () =>{
+export const getDate = () => {
     const date = new Date();
     const day = date.getDate();
     const month = months[date.getMonth()];
     const year = date.getFullYear();
+
+    return [day,month,year];
+}
+
+export const updateDashboardDate = () =>{
+    let day,month,year;
+
+    [day,month,year] = getDate();
 
     //write today's date
     const dateEl = document.querySelector('.date-container');

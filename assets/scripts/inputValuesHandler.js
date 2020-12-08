@@ -12,6 +12,7 @@ export const submitDailyAmount = () => {
         }
     else{
         user.glassCapacity = parseFloat(input.value);
+        user.percentage = user.glassCapacity * 100 / user.dailyAmount ;
         saveUserToLS(user);
         switchToMainWindow();
         

@@ -3,6 +3,6 @@ export const saveUserToLS = (user) => {
 }
 
 export const getUserfromLS = () => {
-    return localStorage.getItem('user');
+    return JSON.parse(localStorage.getItem('user'));
 } 
 

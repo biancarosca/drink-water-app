@@ -126,6 +126,7 @@ main .amount-drank {
   grid-row: 4/5;
   grid-column: 4/5;
   justify-self: center;
+  align-self: center;
   font-size: 4rem;
   z-index: 1;
 }
@@ -137,12 +138,13 @@ main .add-btn {
   grid-column: 4/5;
   z-index: 1;
   justify-self: center;
+  cursor: pointer;
 }
 
 .wave-container {
   width: 100%;
   position: absolute;
-  bottom: 40vh;
+  bottom: 0vh;
   left: 0;
 }
 
@@ -183,9 +185,18 @@ main .add-btn {
 .wave-bottom {
   width: 100%;
   background-color: #00bbfb;
-  height: 40vh;
+  height: 0vh;
   position: absolute;
   bottom: 0;
+}
+
+.extra-water {
+  display: none;
+  grid-column: 3/6;
+  grid-row: 5/6;
+  text-align: center;
+  margin-top: 15px;
+  z-index: 1;
 }
 
 @keyframes wave-anim {

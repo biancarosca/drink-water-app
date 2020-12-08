@@ -1,7 +1,9 @@
 import {getUserfromLS} from './localStorage.js';
-import {getCurrentDate} from './currentDate.js';
+import {updateDashboardDate} from './currentDate.js';
 import {switchToMainWindow} from './inputWindows.js';
 import {submitDailyAmount} from './inputValuesHandler.js';
+import {addWater} from './updateUser.js';
+import {waterProgress} from './updateDOM.js';
 
 
 if (!getUserfromLS())
@@ -15,6 +17,12 @@ if (!getUserfromLS())
 //go straight to dashboard if user already exists in LS
 else{
     switchToMainWindow();
+    waterProgress();
 }
 
-getCurrentDate();
+updateDashboardDate();
+
+
+
+const addBtn = document.querySelector('main .add-btn');
+addBtn.addEventListener('click', addWater);
