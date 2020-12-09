@@ -19,6 +19,7 @@ export const addWater = () => {
     const numberOfDecimals = countDecimals(user.glassCapacity);
     user.history[todayDateString].amountDrank += user.glassCapacity;
     user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
+    user.percentageDrank = parseFloat((user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity).toFixed(1));
     saveUserToLS(user);
 
     waterProgress();
@@ -26,14 +27,17 @@ export const addWater = () => {
 }
 
 export const undoHandler = () => {
-    let todayDateString = formattedDate();
-    let user = getUserfromLS();
-    if(!user.history[todayDateString].amountDrank)
-        return;
-    else{
+    //when user is clicking the button too fast , LS does not have time to update
+    setTimeout(function()
+    {let todayDateString = formattedDate();
+    let user = getUserfromLS();  
+    if(user.history[todayDateString].amountDrank - user.glassCapacity >=0)
+    {
         user.history[todayDateString].amountDrank -= user.glassCapacity;
+        user.percentageDrank -= user.percentage;
         saveUserToLS(user);
     }
 
-    waterProgress();
+    waterProgress();}
+    ,200);
 }

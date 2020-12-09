@@ -12,12 +12,11 @@ export const waterProgress = () => {
 
     if(user.history && user.history[todayDateString])
     {
-    const percentageDrank = parseFloat((user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity).toFixed(1));
     const hoorayEl = document.querySelector('.extra-water');
     
-    if(percentageDrank <= 100)
-        {wavePacket.style.bottom = `${percentageDrank}vh`;
-        bottomWater.style.height = `${percentageDrank}vh`;
+    if(user.percentageDrank <= 100)
+        {wavePacket.style.bottom = `${user.percentageDrank}vh`;
+        bottomWater.style.height = `${user.percentageDrank}vh`;
         hoorayEl.style.display = 'none';
     }
     else{
@@ -25,6 +24,6 @@ export const waterProgress = () => {
         bottomWater.style.height = `100vh`;
         hoorayEl.style.display = 'block';
     }
-    DOMpercentage.innerHTML = `${percentageDrank}%`;
+    DOMpercentage.innerHTML = `${user.percentageDrank}%`;
     }
 }
