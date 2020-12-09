@@ -1,4 +1,4 @@
-import {getDate} from './currentDate.js';
+import {formattedDate} from './currentDate.js';
 import {getUserfromLS,saveUserToLS} from './localStorage.js';
 import {waterProgress} from './updateDOM.js';
 import {countDecimals} from './utils.js';
@@ -9,10 +9,7 @@ export const addWater = () => {
     if(!user.history)
         user.history = {};
 
-    let day,month,year;
-    [day,month,year] = getDate();
-
-    const todayDateString = `${day}/${month}/${year}`;
+    const todayDateString = formattedDate();
 
     if(!user.history[todayDateString])
         {user.history[todayDateString] = {};
@@ -26,4 +23,17 @@ export const addWater = () => {
 
     waterProgress();
 
+}
+
+export const undoHandler = () => {
+    let todayDateString = formattedDate();
+    let user = getUserfromLS();
+    if(!user.history[todayDateString].amountDrank)
+        return;
+    else{
+        user.history[todayDateString].amountDrank -= user.glassCapacity;
+        saveUserToLS(user);
+    }
+
+    waterProgress();
 }

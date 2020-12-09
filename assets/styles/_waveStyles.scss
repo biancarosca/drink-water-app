@@ -1,0 +1,62 @@
+.wave-container{
+    width: 100%;
+    position:absolute;
+    bottom:0vh;
+    left:0;
+    transition: bottom 2s;
+
+}
+
+.wave{
+    width:100%;
+    background: url('/assets/imgs/wave1.png') no-repeat;
+    background-size: 100vw 200px;   
+    background-position: bottom left;
+    height: 200px;
+    position:absolute;
+    bottom:0;
+    left:0;
+
+}
+.wave1{
+    animation: wave-anim 15s linear infinite;
+    opacity: 0.7;
+}
+
+.wave2{
+    animation: wave-anim2 15s linear infinite;
+    opacity: 0.5;
+    animation-delay: -5s;
+}
+
+.wave3{
+    animation: wave-anim 30s linear infinite;
+    opacity: 0.3;
+    animation-delay: -2s;
+}
+
+.wave4{
+    animation: wave-anim2 15s linear infinite;
+    opacity: 0.2;
+    animation-delay: -5s;
+}
+
+.wave-bottom{
+    width: 100%;
+    background-color: #00bbfb;
+    height: 0vh;
+    position:absolute;
+    bottom: 0;
+    transition: height 2s;
+}
+
+.extra-water{
+    display:none;
+    grid-column: 3/6;
+    grid-row: 5/6;
+    text-align: center;
+    margin-top: 15px;
+    z-index: 1;
+}
+
+

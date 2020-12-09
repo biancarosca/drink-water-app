@@ -1,0 +1,79 @@
+@import './variables';
+
+.dashboard{
+    display: none;
+    height: 100vh;
+    nav{
+        animation: fadeIn 0.5s ease-in;
+        width: 80%;
+        height: 10vh;
+        margin: 0 10%;
+        @include flex-center;
+        ul{
+        display: flex;
+        list-style-type: none;
+        li{
+            margin-right: 1rem;
+        }
+        }
+    }
+}
+
+main{
+    display: grid;
+    grid-template-rows: 5% 15% 30% 10% 20% 20% 5%;
+    grid-template-columns:5% 30% 5% 20% 5% 25% 5% 5%;
+    height: 100%;
+    .hamburger{
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+        border: none;
+        cursor: pointer;
+        grid-row: 2/3;
+        grid-column: 1/2;
+        z-index: 1;
+        @include hover;
+    }
+
+    .date-container{
+        grid-row: 2/3;
+        grid-column: 3/6;
+        text-align: center;
+        justify-self: center;
+        z-index:1;
+        @include fadeAnim;
+    }
+
+    .amount-drank{
+        grid-row: 4/5;
+        grid-column:4/5;
+        justify-self: center;
+        align-self:center;
+        font-size: 4rem;
+        z-index: 1;
+        @include fadeAnim;
+    }
+
+    .add-btn{
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        grid-row: 6/7;
+        grid-column: 4/5;
+        z-index: 1;
+        justify-self: center;
+        cursor: pointer;
+        @include hover;
+    }
+
+    .undo {
+        grid-row: 2/3;
+        grid-column: 8/9;
+        margin-right: 15px;
+        height: 20px;
+        justify-self:end;
+        z-index: 1;
+        cursor: pointer;
+        @include hover;
+    }
+}

@@ -10,7 +10,7 @@ const getSuffix = (day) => {
     else return 'th';
 }
 
-export const getDate = () => {
+const getDate = () => {
     const date = new Date();
     const day = date.getDate();
     const month = months[date.getMonth()];
@@ -28,4 +28,11 @@ export const updateDashboardDate = () =>{
     const dateEl = document.querySelector('.date-container');
     dateEl.innerHTML+= `${day}<sup>${getSuffix(day)}</sup> ${month} ${year}`;
 
+}
+
+
+export const formattedDate = () => {
+    let day,month,year;
+    [day,month,year] = getDate();
+    return`${day}/${month}/${year}`;
 }

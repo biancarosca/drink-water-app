@@ -2,7 +2,7 @@ import {getUserfromLS} from './localStorage.js';
 import {updateDashboardDate} from './currentDate.js';
 import {switchToMainWindow} from './inputWindows.js';
 import {submitDailyAmount} from './inputValuesHandler.js';
-import {addWater} from './updateUser.js';
+import {addWater,undoHandler} from './updateUser.js';
 import {waterProgress} from './updateDOM.js';
 
 
@@ -23,6 +23,8 @@ else{
 updateDashboardDate();
 
 
-
 const addBtn = document.querySelector('main .add-btn');
 addBtn.addEventListener('click', addWater);
+
+const undoBtn = document.querySelector('main .undo');
+undoBtn.addEventListener('click', undoHandler);

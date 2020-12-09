@@ -7,3 +7,14 @@ $font-stack : 'Montserrat',sans-serif;
     justify-content: center;
     align-items: center;
 }
+
+@mixin hover {
+    transition: all 0.5s ease;
+    &:hover{
+        transform: scale(1.2);
+    }
+}
+
+@mixin fadeAnim {
+    animation: fadeIn 0.5s ease-in;
+}
