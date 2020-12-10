@@ -1,0 +1,15 @@
+@import './variables';
+
+
+.settings-window{
+    display: none;
+    grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
+    grid-template-columns:5% 25% 7.5% 20% 7.5% 25% 5% 5%;
+    height: 100%;
+
+    .hamburger{
+        @include hamburgerStyle;
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+}

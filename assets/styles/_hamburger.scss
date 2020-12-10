@@ -1,0 +1,31 @@
+@import './variables';
+
+.hamburger-menu{
+    position:absolute;
+    z-index:2;
+    top:0;
+    left:0;
+    height:100%;
+    width: 100%;
+    display:none;
+    ul{
+        height: initial;
+        list-style-type: none;
+        li{
+            margin: 15px 0;
+            @include hover;
+            color: white;
+            font-size: 2rem;
+            cursor:pointer;
+            text-align:center;
+        }
+    }
+}
+
+
+.backdrop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.8);
+}

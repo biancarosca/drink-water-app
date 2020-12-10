@@ -1,6 +1,6 @@
 @import './variables';
 
-.dashboard{
+.dashboard-window{
     display: none;
     height: 100%;
     nav{
@@ -24,16 +24,11 @@ main{
     grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
     grid-template-columns:5% 25% 7.5% 20% 7.5% 25% 5% 5%;
     height: 100%;
+
     .hamburger{
-        width: 20px;
-        height: 20px;
-        margin-left: 15px;
-        border: none;
-        cursor: pointer;
         grid-row: 2/3;
         grid-column: 1/2;
-        z-index: 1;
-        @include hover;
+        @include hamburgerStyle;
     }
 
     .date-container{

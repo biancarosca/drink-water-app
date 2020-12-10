@@ -18,3 +18,14 @@ $font-stack : 'Montserrat',sans-serif;
 @mixin fadeAnim {
     animation: fadeIn 0.5s ease-in;
 }
+
+@mixin hamburgerStyle {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+    @include hover;
+
+}

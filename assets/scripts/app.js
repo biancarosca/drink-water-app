@@ -4,7 +4,7 @@ import {switchToMainWindow} from './inputWindows.js';
 import {submitDailyAmount} from './inputValuesHandler.js';
 import {addWater,undoHandler} from './updateUser.js';
 import {waterProgress} from './updateDOM.js';
-
+import {hamburgerEventListeners} from './hamburgerEvents.js';
 
 if (!getUserfromLS())
 {   
@@ -28,3 +28,5 @@ addBtn.addEventListener('click', addWater);
 
 const undoBtn = document.querySelector('main .undo');
 undoBtn.addEventListener('click', undoHandler);
+
+hamburgerEventListeners();

@@ -113,12 +113,12 @@
   transition: height 2s;
 }
 
-.dashboard {
+.dashboard-window {
   display: none;
   height: 100%;
 }
 
-.dashboard nav {
+.dashboard-window nav {
   animation: fadeIn 0.5s ease-in;
   width: 80%;
   height: 10vh;
@@ -128,12 +128,12 @@
   align-items: center;
 }
 
-.dashboard nav ul {
+.dashboard-window nav ul {
   display: flex;
   list-style-type: none;
 }
 
-.dashboard nav ul li {
+.dashboard-window nav ul li {
   margin-right: 1rem;
 }
 
@@ -145,14 +145,14 @@ main {
 }
 
 main .hamburger {
+  grid-row: 2/3;
+  grid-column: 1/2;
   width: 20px;
   height: 20px;
   margin-left: 15px;
   border: none;
   cursor: pointer;
-  grid-row: 2/3;
-  grid-column: 1/2;
-  z-index: 1;
+  z-index: 3;
   transition: all 0.5s ease;
 }
 
@@ -217,6 +217,110 @@ main .undo:hover {
   grid-row: 5/6;
   text-align: center;
   z-index: 1;
+}
+
+.hamburger-menu {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+
+.hamburger-menu ul {
+  height: initial;
+  list-style-type: none;
+}
+
+.hamburger-menu ul li {
+  margin: 15px 0;
+  transition: all 0.5s ease;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.hamburger-menu ul li:hover {
+  transform: scale(1.2);
+}
+
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.settings-window {
+  display: none;
+  grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
+  grid-template-columns: 5% 25% 7.5% 20% 7.5% 25% 5% 5%;
+  height: 100%;
+}
+
+.settings-window .hamburger {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.5s ease;
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.settings-window .hamburger:hover {
+  transform: scale(1.2);
+}
+
+.history-window {
+  display: none;
+  grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
+  grid-template-columns: 5% 25% 7.5% 20% 7.5% 25% 5% 5%;
+  height: 100%;
+}
+
+.history-window .hamburger {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.5s ease;
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.history-window .hamburger:hover {
+  transform: scale(1.2);
+}
+
+.statistics-window {
+  display: none;
+  grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
+  grid-template-columns: 5% 25% 7.5% 20% 7.5% 25% 5% 5%;
+  height: 100%;
+}
+
+.statistics-window .hamburger {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.5s ease;
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.statistics-window .hamburger:hover {
+  transform: scale(1.2);
 }
 
 * {
