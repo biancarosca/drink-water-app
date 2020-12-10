@@ -13,8 +13,7 @@ export const submitDailyAmount = () => {
         }
     else{
         user.glassCapacity = parseFloat(input.value);
-        const numberOfDecimals = countDecimals(user.glassCapacity);
-        user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(numberOfDecimals)) ;
+        user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(0)) ;
         saveUserToLS(user);
         switchToMainWindow();
         
