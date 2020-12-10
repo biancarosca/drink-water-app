@@ -7,14 +7,17 @@
     display: none;
 }
 .set-amount{
+    height: initial;
     h1{
         text-align: center;
         @include fadeAnim;
+        height: initial;
     }
 }
 .submit{
     @include flex-center;
     margin-top: 1.5rem;
+    height: initial;
     input{
         border-radius: 15%;
         border: 2px solid white;

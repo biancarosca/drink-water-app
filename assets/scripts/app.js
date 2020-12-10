@@ -9,7 +9,7 @@ import {waterProgress} from './updateDOM.js';
 if (!getUserfromLS())
 {   
     const firstSection = document.querySelector('.start-app');
-    firstSection.style.display = 'block';
+    firstSection.style.display = 'flex';
     const submitBtn = document.querySelector('.submit .first-btn');
     submitBtn.addEventListener('click', submitDailyAmount);
 
