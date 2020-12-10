@@ -3,7 +3,6 @@ import {saveUserToLS} from './localStorage.js';
 import {countDecimals} from './utils.js';
 
 let user = new Object();
-user.percentageDrank = 0;
 
 export const submitDailyAmount = () => {
     const submitBtn = document.querySelector('.submit button');

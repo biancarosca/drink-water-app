@@ -14,12 +14,13 @@ export const addWater = () => {
     if(!user.history[todayDateString])
         {user.history[todayDateString] = {};
         user.history[todayDateString].amountDrank = 0;
+        user.history[todayDateString].percentageDrank = 0;
     }
     
     const numberOfDecimals = countDecimals(user.glassCapacity);
     user.history[todayDateString].amountDrank += user.glassCapacity;
     user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
-    user.percentageDrank = parseFloat((user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity).toFixed(1));
+    user.history[todayDateString].percentageDrank = parseFloat((user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity).toFixed(1));
     saveUserToLS(user);
 
     waterProgress();
@@ -34,7 +35,10 @@ export const undoHandler = () => {
     if(user.history[todayDateString].amountDrank - user.glassCapacity >=0)
     {
         user.history[todayDateString].amountDrank -= user.glassCapacity;
-        user.percentageDrank -= user.percentage;
+        const numberOfDecimals = countDecimals(user.glassCapacity);
+        user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
+        user.history[todayDateString].percentageDrank -= user.percentage;
+        user.history[todayDateString].percentageDrank = parseFloat(user.history[todayDateString].percentageDrank.toFixed(numberOfDecimals));
         saveUserToLS(user);
     }
 

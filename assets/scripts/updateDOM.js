@@ -14,9 +14,9 @@ export const waterProgress = () => {
     {
     const hoorayEl = document.querySelector('.extra-water');
     
-    if(user.percentageDrank <= 100)
-        {wavePacket.style.bottom = `${user.percentageDrank}vh`;
-        bottomWater.style.height = `${user.percentageDrank}vh`;
+    if(user.history[todayDateString].percentageDrank <= 100)
+        {wavePacket.style.bottom = `${user.history[todayDateString].percentageDrank}vh`;
+        bottomWater.style.height = `${user.history[todayDateString].percentageDrank}vh`;
         hoorayEl.style.display = 'none';
     }
     else{
@@ -24,6 +24,6 @@ export const waterProgress = () => {
         bottomWater.style.height = `100vh`;
         hoorayEl.style.display = 'block';
     }
-    DOMpercentage.innerHTML = `${user.percentageDrank}%`;
+    DOMpercentage.innerHTML = `${user.history[todayDateString].percentageDrank}%`;
     }
 }
