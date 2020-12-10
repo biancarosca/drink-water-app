@@ -2,7 +2,7 @@
 
 .dashboard{
     display: none;
-    height: 100vh;
+    height: 100%;
     nav{
         animation: fadeIn 0.5s ease-in;
         width: 80%;
@@ -57,7 +57,7 @@ main{
 
     .add-btn{
         font-size: 3rem;
-        // margin-bottom: 1rem;
+        height: 50px;
         grid-row: 6/7;
         grid-column: 4/5;
         z-index: 1;

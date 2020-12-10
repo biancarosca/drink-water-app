@@ -7,13 +7,14 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    height:100%;
 }
 
 body{
     font-family: $font-stack;
     background-color: $background-color;
     color: white;
-    height: 100vh;
+    height: 100%;
     @include flex-center;
 }
 
