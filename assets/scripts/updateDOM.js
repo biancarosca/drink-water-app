@@ -27,3 +27,9 @@ export const waterProgress = () => {
     DOMpercentage.innerHTML = `${user.history[todayDateString].percentageDrank}%`;
     }
 }
+
+export const addCurentSettingsToDOM = () => {
+    let user = getUserfromLS();
+    document.getElementById('daily-amt').value = user.dailyAmount;
+    document.getElementById('glass-cap').value = user.glassCapacity;
+}

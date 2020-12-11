@@ -278,6 +278,37 @@ main .undo:hover {
   transform: scale(1.2);
 }
 
+.save {
+  animation: fadeIn 0.5s ease-in;
+  padding: 5px;
+  border-radius: 100%;
+  border: none;
+  background-color: white;
+  color: #144FC6;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  grid-column: 5/6;
+  grid-row: 5/6;
+  justify-self: center;
+  align-self: center;
+  font-size: 2.2rem;
+}
+
+.save:hover {
+  transform: scale(1.2);
+}
+
+.save:focus {
+  outline: none;
+}
+
+.save:active {
+  border: white;
+  background-color: #144FC6;
+  color: white;
+}
+
 .back-btn {
   width: 20px;
   height: 20px;
@@ -292,6 +323,45 @@ main .undo:hover {
 
 .back-btn:hover {
   transform: scale(1.2);
+}
+
+.settings-container {
+  animation: fadeIn 0.5s ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-row: 3/span 2;
+  grid-column: 3/span 5;
+}
+
+.settings-container h1 {
+  text-align: center;
+}
+
+.settings-container .input-container {
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.settings-container .input-container span {
+  display: inline-block;
+  margin-left: 1rem;
+  width: 150px;
+}
+
+.settings-container input {
+  border-radius: 5%;
+  border: 2px solid white;
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-left: 0.7rem;
+  color: #173548;
+}
+
+.settings-container input:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 1125px) {

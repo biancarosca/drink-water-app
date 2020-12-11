@@ -33,26 +33,12 @@
         }
     }
 
-    button {
-        padding: 5px;
-        border-radius: 100%;
-        border: none;
-        background-color: white;
-        color: $secondary-color;
-        cursor: pointer;
-        &:hover{
-            transform: scale(1.2);
-        }
-        &:focus{
-            outline: none;
-        }
-
-        &:active{
-            border: white;
-            background-color: $secondary-color;
-            color: white;
-        }
+    button{
+        @include checkBtn;
+    
     }
     
     
+    
 }
+

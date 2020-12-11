@@ -2,9 +2,11 @@ import {getUserfromLS} from './localStorage.js';
 import {updateDashboardDate} from './currentDate.js';
 import {switchToMainWindow} from './inputWindows.js';
 import {submitDailyAmount} from './inputValuesHandler.js';
-import {addWater,undoHandler} from './updateUser.js';
-import {waterProgress} from './updateDOM.js';
+import {addWater,undoHandler,saveNewSettings} from './updateUser.js';
+import {waterProgress,addCurentSettingsToDOM} from './updateDOM.js';
 import {hamburgerEventListeners} from './hamburgerEvents.js';
+// import {saveNewSettings} from './settingsWindow.js';
+
 
 if (!getUserfromLS())
 {   
@@ -30,3 +32,8 @@ const undoBtn = document.querySelector('main .undo');
 undoBtn.addEventListener('click', undoHandler);
 
 hamburgerEventListeners();
+
+const saveBtn = document.querySelector('.settings-window .save');
+saveBtn.addEventListener('click',saveNewSettings);
+
+addCurentSettingsToDOM();
