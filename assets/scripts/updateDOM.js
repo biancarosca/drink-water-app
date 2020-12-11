@@ -33,3 +33,12 @@ export const addCurentSettingsToDOM = () => {
     document.getElementById('daily-amt').value = user.dailyAmount;
     document.getElementById('glass-cap').value = user.glassCapacity;
 }
+
+export const addValidationMessage = (parentEl,message) => {
+    const messageEl= document.querySelector(`.${parentEl} .${message}`);
+    messageEl.style.display = 'flex';
+    setTimeout(function() {
+        messageEl.style.display = 'none';
+    },2000);
+
+}

@@ -5,7 +5,6 @@ import {submitDailyAmount} from './inputValuesHandler.js';
 import {addWater,undoHandler,saveNewSettings} from './updateUser.js';
 import {waterProgress,addCurentSettingsToDOM} from './updateDOM.js';
 import {hamburgerEventListeners} from './hamburgerEvents.js';
-// import {saveNewSettings} from './settingsWindow.js';
 
 
 if (!getUserfromLS())
@@ -36,4 +35,6 @@ hamburgerEventListeners();
 const saveBtn = document.querySelector('.settings-window .save');
 saveBtn.addEventListener('click',saveNewSettings);
 
-addCurentSettingsToDOM();
+
+// if(getUserfromLS().dailyAmount && getUserfromLS().glassCapacity)
+//     addCurentSettingsToDOM();

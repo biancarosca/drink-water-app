@@ -4,7 +4,7 @@
 .settings-window{
     display: none;
     grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
-    grid-template-columns:3% 3% 25% 7.5% 20% 7.5% 25% 5% 5%;
+    grid-template-columns:3% 3% 20% 12.5% 20% 12.5% 20% 5% 5%;
     height: 100%;
 
     .hamburger{
@@ -33,6 +33,38 @@
     @include hamburgerStyle;
     grid-row : 2/3;
     grid-column: 2/3;
+}
+
+.success,.error{
+    display:none;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    padding: 1.5rem 0.5rem;
+    margin-top: 2rem;
+    grid-row:2/3;
+    grid-column: 3/span 5;
+    text-align:center;
+    i{
+        background-color:#19A974;
+        color:white;
+        height: 25px;
+        width: 25px;
+        font-size: 1rem;
+        text-align:center;
+        margin-right: 5px;
+        padding: 5px;
+        border-radius: 100%;
+    }
+
+}
+
+.error{
+    i{
+        background-color: red;
+        height: 30px;
+        width: 30px;
+    }
 }
 
 .settings-container{

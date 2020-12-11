@@ -1,6 +1,6 @@
 import {formattedDate} from './currentDate.js';
 import {getUserfromLS,saveUserToLS} from './localStorage.js';
-import {waterProgress} from './updateDOM.js';
+import {waterProgress,addValidationMessage} from './updateDOM.js';
 import {countDecimals} from './utils.js';
 
 export const addWater = () => {
@@ -45,7 +45,7 @@ export const undoHandler = () => {
         user.history[todayDateString].amountDrank = 0;
         user.history[todayDateString].percentageDrank = 0;
     }
-    
+
     saveUserToLS(user);
     waterProgress();}
     ,200);
@@ -57,27 +57,38 @@ export const saveNewSettings = () => {
     const glassCapInput = document.getElementById('glass-cap');
     const newDailyAmt = parseFloat(dailyAmtInput.value);
     const newGlassCap = parseFloat(glassCapInput.value);
-    
+
     let user = getUserfromLS();
 
-    // add input validation
+    const regex= /^[+-]?([0-9]*[.])?[0-9]+$/;
 
+    if(dailyAmtInput.value.match(regex) && glassCapInput.value.match(regex))      //input validation
+    {
     user.dailyAmount = newDailyAmt;
     user.glassCapacity = newGlassCap;
 
     const todayDateString = formattedDate();
-
+    if(user.history)
+    {
     if(user.history[todayDateString])
         {user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(0)) ;
         const newPercentageForToday = parseFloat((user.history[todayDateString].amountDrank * 100 / newDailyAmt).toFixed(0));
-        console.log(newPercentageForToday);
         user.history[todayDateString].percentageDrank = newPercentageForToday;
+        }   
+    }
+
+    saveUserToLS(user); 
+    
+    //update DOM
+    if(user.history)
+        {if(user.history[todayDateString])
+            waterProgress();
         }
 
-    saveUserToLS(user);
-
-    //update DOM
-    if(user.history[todayDateString])
-        waterProgress();
+    addValidationMessage('settings-window','success');
+    }
+    else 
+        addValidationMessage('settings-window','error');
     
-}
+    }
+
