@@ -220,6 +220,7 @@ main .undo:hover {
 }
 
 .hamburger-menu {
+  animation: fadeInV2 0.5s ease-in;
   position: absolute;
   z-index: 2;
   top: 0;
@@ -257,7 +258,7 @@ main .undo:hover {
 .settings-window {
   display: none;
   grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
-  grid-template-columns: 5% 25% 7.5% 20% 7.5% 25% 5% 5%;
+  grid-template-columns: 3% 3% 25% 7.5% 20% 7.5% 25% 5% 5%;
   height: 100%;
 }
 
@@ -277,10 +278,38 @@ main .undo:hover {
   transform: scale(1.2);
 }
 
+.back-btn {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.5s ease;
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+
+.back-btn:hover {
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 1125px) {
+  .back-btn {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .back-btn {
+    margin-left: 30px;
+  }
+}
+
 .history-window {
   display: none;
   grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
-  grid-template-columns: 5% 25% 7.5% 20% 7.5% 25% 5% 5%;
+  grid-template-columns: 3% 3% 25% 7.5% 20% 7.5% 25% 5% 5%;
   height: 100%;
 }
 
@@ -303,7 +332,7 @@ main .undo:hover {
 .statistics-window {
   display: none;
   grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
-  grid-template-columns: 5% 25% 7.5% 20% 7.5% 25% 5% 5%;
+  grid-template-columns: 3% 3% 25% 7.5% 20% 7.5% 25% 5% 5%;
   height: 100%;
 }
 
@@ -372,6 +401,22 @@ body {
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes fadeInV2 {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) translateY(-100%);
+    border-radius: 0 100% 100% 0;
+  }
+  99% {
+    border-radius: 0 100% 100% 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%) translateY(0%);
+    border-radius: 0%;
   }
 }
 

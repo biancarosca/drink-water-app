@@ -1,6 +1,7 @@
 @import './variables';
 
 .hamburger-menu{
+    animation: fadeInV2 0.5s ease-in;
     position:absolute;
     z-index:2;
     top:0;
