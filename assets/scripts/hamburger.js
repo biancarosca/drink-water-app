@@ -19,8 +19,8 @@ export const goToPage = (event) => {
 
     const mainParentClass = mainParentEl.classList[0]
     mainParentEl.style.display = 'none';
-    
-    if(!iconEvent)
+
+    if(!iconEvent || document.querySelector(`.${mainParentClass} .hamburger-menu`).classList.contains('backdrop') ) 
         hamburgerHandler(`.${mainParentClass}`);     //toggle menu
 
     //make the page you go to visible
