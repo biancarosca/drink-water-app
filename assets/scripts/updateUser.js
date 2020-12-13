@@ -60,18 +60,21 @@ export const saveNewSettings = () => {
 
     let user = getUserfromLS();
 
-    const regex= /^[+-]?([0-9]*[.])?[0-9]+$/;
+    const regex = /^[+]?((([1-9][0-9]*[.][0-9]*)?[1-9][0-9]*)|([0-9]?[.][1-9]+[0-9]*)|([0-9]?[.][0]*[1-9]+[0-9]*)|([1-9][0-9]*[.][0-9]+))$/;
+
 
     if(dailyAmtInput.value.match(regex) && glassCapInput.value.match(regex))      //input validation
     {
     user.dailyAmount = newDailyAmt;
     user.glassCapacity = newGlassCap;
 
+    user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(0)) ;
+
     const todayDateString = formattedDate();
     if(user.history)
     {
     if(user.history[todayDateString])
-        {user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(0)) ;
+        {
         const newPercentageForToday = parseFloat((user.history[todayDateString].amountDrank * 100 / newDailyAmt).toFixed(0));
         user.history[todayDateString].percentageDrank = newPercentageForToday;
         }   

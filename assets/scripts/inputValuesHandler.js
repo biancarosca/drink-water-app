@@ -7,7 +7,7 @@ let user = new Object();
 export const submitDailyAmount = () => {
     const submitBtn = document.querySelector('.submit button');
     const input = document.querySelector('.submit input');
-    const regex= /^[+-]?([0-9]*[.])?[0-9]+$/;
+    const regex = /^[+]?((([1-9][0-9]*[.][0-9]*)?[1-9][0-9]*)|([0-9]?[.][1-9]+[0-9]*)|([0-9]?[.][0]*[1-9]+[0-9]*)|([1-9][0-9]*[.][0-9]+))$/;
     if(submitBtn.classList.contains('first-btn'))
         {
             if(input.value.match(regex))
