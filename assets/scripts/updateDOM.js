@@ -26,6 +26,8 @@ export const waterProgress = () => {
     }
     DOMpercentage.innerHTML = `${user.history[todayDateString].percentageDrank}%`;
     }
+
+   document.querySelector('.dashboard-window .undo').style.pointerEvents = 'initial';
 }
 
 export const addCurentSettingsToDOM = () => {

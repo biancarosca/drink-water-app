@@ -28,10 +28,11 @@ export const addWater = () => {
 
 }
 
-export const undoHandler = () => {
+export const undoHandler = (event) => {
     //when user is clicking the button too fast , LS does not have time to update
-    setTimeout(function()
-    {let todayDateString = formattedDate();
+    event.target.style.pointerEvents = 'none';
+
+    let todayDateString = formattedDate();
     let user = getUserfromLS();  
     if(user.history[todayDateString].amountDrank - user.glassCapacity >=0)
     {
@@ -47,8 +48,8 @@ export const undoHandler = () => {
     }
 
     saveUserToLS(user);
-    waterProgress();}
-    ,200);
+    waterProgress();
+    
 }
 
 

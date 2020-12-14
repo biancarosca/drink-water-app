@@ -36,5 +36,4 @@ const saveBtn = document.querySelector('.settings-window .save');
 saveBtn.addEventListener('click',saveNewSettings);
 
 
-// if(getUserfromLS().dailyAmount && getUserfromLS().glassCapacity)
-//     addCurentSettingsToDOM();
+addCurentSettingsToDOM();
