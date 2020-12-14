@@ -5,7 +5,7 @@ import {submitDailyAmount} from './inputValuesHandler.js';
 import {addWater,undoHandler,saveNewSettings} from './updateUser.js';
 import {waterProgress,addCurentSettingsToDOM} from './updateDOM.js';
 import {hamburgerEventListeners} from './hamburgerEvents.js';
-
+import {writeCalendarToDOM} from './calendar.js';
 
 if (!getUserfromLS())
 {   
@@ -37,3 +37,5 @@ saveBtn.addEventListener('click',saveNewSettings);
 
 
 addCurentSettingsToDOM();
+
+writeCalendarToDOM();

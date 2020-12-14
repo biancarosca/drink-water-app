@@ -3,8 +3,8 @@
 
 .history-window{
     display: none;
-    grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
-    grid-template-columns:3% 3% 25% 7.5% 20% 7.5% 25% 5% 5%;
+    grid-template-rows: 5% 15% repeat(6,10%) 20%;
+    grid-template-columns:3% 3% repeat(7,12.57%) 3% 3%;
     height: 100%;
 
     .hamburger{
@@ -12,4 +12,60 @@
         grid-row: 2/3;
         grid-column: 1/2;
     }
+
+    .cal-header{
+        @include flex-center;
+        flex-direction: column;
+        grid-column: 4/ span 5;
+        grid-row: 2/3;
+    }
+    h2{
+        font-size: 1rem;
+    }
+
+
+
+}
+
+.cal-day{
+    @include flex-center;
+    grid-row: 3/4;
+}
+
+.sunday{
+    grid-column: 3/4;
+}
+
+.monday {
+    grid-column: 4/5;
+}
+.tuesday {
+    grid-column: 5/6;
+}
+.wednesday {
+    grid-column: 6/7;
+}
+.thursday {
+    grid-column: 7/8;
+}
+.friday {
+    grid-column: 8/9;
+}
+
+.saturday {
+    grid-column: 9/10;
+}
+
+.cal-box {
+    @include flex-center;
+    span{
+        @include flex-center;
+        width: 40px;
+        height: 40px;
+        &:hover{
+        background-color: $water-color;
+        border-radius: 100%;
+    }
+    }
+    
 }

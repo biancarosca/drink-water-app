@@ -14,7 +14,7 @@ const getSuffix = (day) => {
     }
 }
 
-const getDate = () => {
+export const getDate = () => {
     const date = new Date();
     const day = date.getDate();
     const month = months[date.getMonth()];
