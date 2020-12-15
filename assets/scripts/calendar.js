@@ -8,12 +8,32 @@ const createTooltip = (dayEl,dayBox,user,date) => {
     dayEl.appendChild(tooltip);
 
     //hover effect , working for mobile too
-    dayBox.addEventListener('mouseover',function (event) {
-        if(event.target.parentNode.querySelector('.tooltip').classList.contains('ttp-display-none'))
-            event.target.parentNode.querySelector('.tooltip').classList.replace('ttp-display-none','ttp-display-flex');
+    let eventName ;
+    if(parseFloat(window.innerWidth) < 800 )
+        eventName = 'click';
+    else
+        eventName = 'mouseover';
+    dayBox.addEventListener(`${eventName}`,function (event) {
+        let currentTooltip,currentDayBox;
+        currentTooltip = event.target.parentNode.querySelector('.tooltip');
+        currentDayBox = event.target.parentNode.querySelector('span');
+        if(currentTooltip.classList.contains('ttp-display-none'))
+            {if(currentDayBox.classList.contains('not-achieved'))
+                currentDayBox.classList.add('red-hover');
+            else
+                currentDayBox.classList.add('green-hover');
+            currentTooltip.classList.replace('ttp-display-none','ttp-display-flex');
+            }
         else
-            event.target.parentNode.querySelector('.tooltip').classList.replace('ttp-display-flex','ttp-display-none');
+            {if(currentDayBox.classList.contains('not-achieved'))
+                currentDayBox.classList.remove('red-hover');
+            else
+                currentDayBox.classList.remove('green-hover');
+            currentTooltip.classList.replace('ttp-display-flex','ttp-display-none');
+            }
+
     })
+    
 
     dayBox.addEventListener('mouseout',function(event) {
         event.target.parentNode.querySelector('.tooltip').classList.replace('ttp-display-flex','ttp-display-none');
