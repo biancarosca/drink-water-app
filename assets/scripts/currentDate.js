@@ -14,10 +14,10 @@ const getSuffix = (day) => {
     }
 }
 
-export const getDate = () => {
+export const getDate = (monthTerm=0) => {
     const date = new Date();
     const day = date.getDate();
-    const month = months[date.getMonth()];
+    const month = months[date.getMonth()+monthTerm];
     const year = date.getFullYear();
 
     return [day,month,year];
@@ -39,4 +39,12 @@ export const formattedDate = () => {
     let day,month,year;
     [day,month,year] = getDate();
     return`${day}/${month}/${year}`;
+}
+
+export const fromStringToNumberMonth = (monthString) =>{
+    return months.indexOf(monthString);
+}
+
+export const fromNumberToStringMonth = (index) => {
+    return months[index];
 }

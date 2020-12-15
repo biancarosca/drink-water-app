@@ -5,7 +5,7 @@ import {submitDailyAmount} from './inputValuesHandler.js';
 import {addWater,undoHandler,saveNewSettings} from './updateUser.js';
 import {waterProgress,addCurentSettingsToDOM} from './updateDOM.js';
 import {hamburgerEventListeners} from './hamburgerEvents.js';
-import {writeCalendarToDOM} from './calendar.js';
+import {writeCalendarToDOM,arrowsEventListeners} from './calendar.js';
 
 if (!getUserfromLS())
 {   
@@ -39,3 +39,5 @@ if(document.querySelector('.start-app').style.display === 'none')       //if the
     {writeCalendarToDOM();
     addCurentSettingsToDOM();
     }
+
+arrowsEventListeners();     //event listeners for calendar arrows

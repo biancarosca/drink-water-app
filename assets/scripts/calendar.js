@@ -1,5 +1,35 @@
-import {getDate} from './currentDate.js';
+import {getDate,fromStringToNumberMonth,fromNumberToStringMonth} from './currentDate.js';
 import {getUserfromLS} from './localStorage.js'
+
+
+const clearPreviousMonthDOM = () => {
+    document.querySelectorAll('.cal-box').forEach((box) => {
+        box.innerHTML = '';
+    })
+}
+
+const prevMonth = () => {
+    clearPreviousMonthDOM();
+    writeCalendarToDOM(-1);
+}
+
+const nextMonth = () => {
+    clearPreviousMonthDOM();
+    writeCalendarToDOM(1);
+}
+
+export const arrowsEventListeners = () => {
+    document.querySelector('.cal-header .fa-caret-left').addEventListener(('click'),prevMonth);
+    document.querySelector('.cal-header .fa-caret-right').addEventListener(('click'),nextMonth);
+} 
+
+const isDeviceTouchScreen = () =>{
+    if(window.matchMedia("(pointer: coarse)").matches) {
+        return true;
+    }
+    else
+        return false;
+}
 
 const createTooltip = (dayEl,dayBox,user,date) => {
     //create tooltip
@@ -9,7 +39,7 @@ const createTooltip = (dayEl,dayBox,user,date) => {
 
     //hover effect , working for mobile too
     let eventName ;
-    if(parseFloat(window.innerWidth) < 800 )
+    if(isDeviceTouchScreen())
         eventName = 'click';
     else
         eventName = 'mouseover';
@@ -89,16 +119,40 @@ const createDOMelement = (j,row,i,month,year) => {
 }
 
 
-export const writeCalendarToDOM = () => {
+export const writeCalendarToDOM = (monthDirection = 0) => {
     let day,month, year;
     [day,month,year] = getDate();
     const monthAndYearEl = document.querySelector('.history-window h2');
-    monthAndYearEl.innerHTML = `${month} / ${year}`;
 
-    const date = new Date();
-    const firstDay = new Date(year,date.getMonth()).getDay();      //1st of the month weekday
-    const numberOfDaysInCurrMonth = new Date(year,date.getMonth()+1,0).getDate();     
-    
+    let date,firstDay,numberOfDaysInCurrMonth;
+    if(monthDirection)
+    {   
+        const monthDate = monthAndYearEl.innerHTML.split(' ')[0] ;
+        month = fromStringToNumberMonth(monthDate);
+
+        const yearDate = monthAndYearEl.innerHTML.split(' ')[2] 
+        year = parseInt(yearDate);
+
+        if(month === 0 && monthDirection === -1)
+            {month = 12;
+            year--;
+            }
+        else if(month ===11 && monthDirection === 1)
+            {month = -1;
+            year++; 
+            }   
+        
+        firstDay = new Date(year,month+monthDirection).getDay();      //1st of the month weekday
+        numberOfDaysInCurrMonth = new Date(year,month+monthDirection+1,0).getDate(); 
+        month = fromNumberToStringMonth(month+monthDirection); 
+    }
+    else
+    {date = new Date();
+    firstDay = new Date(year,date.getMonth()).getDay();      //1st of the month weekday
+    numberOfDaysInCurrMonth = new Date(year,date.getMonth()+1,0).getDate();     
+    }
+
+    monthAndYearEl.innerHTML = `${month} / ${year}`;
 
     //write first line of the calendar
     let i=1;

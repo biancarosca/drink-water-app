@@ -605,17 +605,18 @@ main .undo:hover {
 .red-legend {
   animation: fadeIn 0.5s ease-in;
   display: flex;
-  align-items: flex-start;
-  grid-row: 9/10;
+  align-items: center;
+  height: fit-content;
+  grid-row: 10/11;
   grid-column: 3/span 4;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .red-legend .circle {
   margin: 0 5px;
   justify-self: start;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 100%;
   background-color: #e24d4d;
 }
@@ -627,22 +628,26 @@ main .undo:hover {
 }
 
 .red-legend .text {
+  font-size: 14px;
   text-align: center;
+  height: fit-content;
 }
 
 .green-legend {
   animation: fadeIn 0.5s ease-in;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  height: fit-content;
   grid-row: 10/11;
   grid-column: 3/span 4;
+  margin-bottom: 10px;
 }
 
 .green-legend .circle {
   margin: 0 5px;
   justify-self: start;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 100%;
   background-color: #12af12;
 }
@@ -654,7 +659,9 @@ main .undo:hover {
 }
 
 .green-legend .text {
+  font-size: 14px;
   text-align: center;
+  height: fit-content;
 }
 
 .statistics-window {
