@@ -69,7 +69,7 @@ export const writeCalendarToDOM = () => {
     let day,month, year;
     [day,month,year] = getDate();
     const monthAndYearEl = document.querySelector('.history-window h2');
-    monthAndYearEl.innerHTML = `${month}/${year}`;
+    monthAndYearEl.innerHTML = `${month} / ${year}`;
 
     const date = new Date();
     const firstDay = new Date(year,date.getMonth()).getDay();      //1st of the month weekday
