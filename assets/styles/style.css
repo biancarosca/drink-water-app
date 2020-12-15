@@ -434,7 +434,7 @@ main .undo:hover {
 
 .history-window {
   display: none;
-  grid-template-rows: 5% 15% repeat(6, 10%) 20%;
+  grid-template-rows: 5% 15% repeat(6, 10%) 10% 10%;
   grid-template-columns: 3% 3% repeat(7, 12.57%) 3% 3%;
   height: 100%;
 }
@@ -504,6 +504,7 @@ main .undo:hover {
 }
 
 .cal-box {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -515,11 +516,106 @@ main .undo:hover {
   align-items: center;
   width: 40px;
   height: 40px;
+  border-radius: 100%;
 }
 
-.cal-box span:hover {
-  background-color: #00BBFB;
+.tooltip {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: fit-content;
+  background-color: #fff0f0;
+  color: #173548;
+  border-radius: 6px;
+  padding: 5px 0;
+  z-index: 1;
+  bottom: 100%;
+}
+
+.tooltip:after {
+  content: '';
+  position: absolute;
+  left: 45%;
+  top: 100%;
+  border-style: solid;
+  border-width: 7px;
+  border-color: rgba(255, 240, 240, 0.521) transparent transparent transparent;
+}
+
+.not-achieved {
+  background-color: #e24d4d;
+}
+
+.not-achieved:hover {
+  background-color: #ff1818;
+  box-shadow: 0 0 50px #ff1818;
+  transform: scale(1.2);
+}
+
+.achieved {
+  background-color: #12af12;
+}
+
+.achieved:hover {
+  background-color: #39ff14;
+  box-shadow: 0 0 50px #39ff14;
+  transform: scale(1.2);
+}
+
+.red-legend {
+  display: flex;
+  align-items: flex-start;
+  grid-row: 9/10;
+  grid-column: 3/span 2;
+  margin-top: 20px;
+}
+
+.red-legend .circle {
+  margin: 0 5px;
+  justify-self: start;
+  width: 20px;
+  height: 20px;
   border-radius: 100%;
+  background-color: #e24d4d;
+}
+
+.red-legend .circle:hover {
+  background-color: #ff1818;
+  box-shadow: 0 0 50px #ff1818;
+  transform: scale(1.2);
+}
+
+.red-legend .text {
+  text-align: center;
+}
+
+.green-legend {
+  display: flex;
+  align-items: flex-start;
+  grid-row: 10/11;
+  grid-column: 3/span 2;
+}
+
+.green-legend .circle {
+  margin: 0 5px;
+  justify-self: start;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #12af12;
+}
+
+.green-legend .circle:hover {
+  background-color: #39ff14;
+  box-shadow: 0 0 50px #39ff14;
+  transform: scale(1.2);
+}
+
+.green-legend .text {
+  text-align: center;
 }
 
 .statistics-window {

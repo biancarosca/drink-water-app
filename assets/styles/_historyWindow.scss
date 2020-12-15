@@ -3,7 +3,7 @@
 
 .history-window{
     display: none;
-    grid-template-rows: 5% 15% repeat(6,10%) 20%;
+    grid-template-rows: 5% 15% repeat(6,10%) 10% 10%;
     grid-template-columns:3% 3% repeat(7,12.57%) 3% 3%;
     height: 100%;
 
@@ -57,15 +57,94 @@
 }
 
 .cal-box {
+    position: relative;
     @include flex-center;
     span{
         @include flex-center;
         width: 40px;
         height: 40px;
-        &:hover{
-        background-color: $water-color;
         border-radius: 100%;
     }
+
+}
+
+.tooltip {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: fit-content;
+    background-color:rgba(255, 240, 240, 1);
+    color:$background-color;
+    border-radius: 6px;
+    padding: 5px 0;
+    z-index: 1;
+    bottom: 100%;
+    &:after{
+        content:'';
+        position:absolute;
+        left: 45%;
+        top: 100%;
+        border-style: solid;
+        border-width: 7px;
+        border-color: rgba(255, 240, 240, 0.521) transparent transparent transparent;
     }
+}
     
+.not-achieved{
+    background-color: rgb(226, 77, 77);
+    @include dateRedHoverEffect;
+}
+
+
+
+.achieved {
+    background-color:rgb(18, 175, 18);
+    @include dateGreenHoverEffect;
+
+}
+
+
+.red-legend{
+    display: flex;
+    align-items: flex-start;
+    grid-row: 9/10;
+    grid-column: 3/span 2;
+    margin-top:20px;
+    .circle{
+        margin:0 5px;
+        justify-self: start;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background-color: rgb(226, 77, 77);
+        @include dateRedHoverEffect;
+        
+    }
+
+    .text{
+        text-align:center;
+    }
+}
+
+.green-legend{
+    display: flex;
+    align-items: flex-start;
+    grid-row: 10/11;
+    grid-column: 3/span 2;
+    .circle{
+        margin:0 5px;
+        justify-self: start;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background-color: rgb(18, 175, 18);
+        @include dateGreenHoverEffect;
+      
+    }
+    .text{
+        text-align:center;
+    }
 }

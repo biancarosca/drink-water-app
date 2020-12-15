@@ -52,3 +52,20 @@ $font-stack : 'Montserrat',sans-serif;
         color: white;
     }
 }
+
+@mixin dateGreenHoverEffect {
+    &:hover{
+        background-color: #39ff14;
+        box-shadow: 0 0 50px #39ff14;
+        transform: scale(1.2);
+    }
+}
+
+@mixin dateRedHoverEffect {
+    &:hover {
+        background-color: #ff1818;
+        box-shadow: 0 0 50px #ff1818;
+        transform: scale(1.2);
+        
+    }
+}

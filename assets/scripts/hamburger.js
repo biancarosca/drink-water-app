@@ -1,3 +1,5 @@
+// import {writeCalendarToDOM} from './calendar.js';
+
 export const hamburgerHandler = (parentClass) => {
 const hamburgerWindow = document.querySelector(`${parentClass} .hamburger-menu`);
 hamburgerWindow.classList.toggle('backdrop');
@@ -27,11 +29,11 @@ export const goToPage = (event) => {
     const clickedElClass = event.target.classList[0];
     const goToWindow = document.querySelector(`.${clickedElClass}-window`);
 
-    if(clickedElClass === 'dashboard-window')
-        goToWindow.style.display= "block";
-    else //if go to home page
-        goToWindow.style.display= "grid";  
-    
+    // if(clickedElClass === 'history')
+    //     writeCalendarToDOM();
+
+    goToWindow.style.display= "grid"; 
+        
     //remove the X icon from dashboard menu
     if(document.querySelector('.fa-times'))
         document.querySelector('.fa-times').classList.replace('fa-times','fa-bars');

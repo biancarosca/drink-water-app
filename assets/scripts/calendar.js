@@ -1,10 +1,60 @@
 import {getDate} from './currentDate.js';
+import {getUserfromLS} from './localStorage.js'
 
-const createDOMelement = (j,row,i) => {
+const createTooltip = (dayEl,dayBox,user,date) => {
+    //create tooltip
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('tooltip');
+    dayEl.appendChild(tooltip);
+
+    //hover effect
+    dayBox.addEventListener('mouseover',function (event) {
+        event.target.parentNode.querySelector('.tooltip').style.display = 'flex';
+    })
+
+    dayBox.addEventListener('mouseout',function(event) {
+        event.target.parentNode.querySelector('.tooltip').style.display = 'none';
+    })
+
+    //add text to tooltip
+    const amountDrank = user.history[date].amountDrank;
+    let targetAmount;
+    if(user.history[date].currentDailyAmount)        //true if the daily amount was modified in the app
+        targetAmount = user.history[date].currentDailyAmount;
+    else
+        targetAmount = user.dailyAmount;
+
+    tooltip.innerHTML = `<p>${amountDrank}L / ${targetAmount}L</p>
+    <p>${user.history[date].percentageDrank}%</p>
+    `;
+} 
+
+const createDOMelement = (j,row,i,month,year) => {
     const historyWindow = document.querySelector('.history-window');
     const dayEl = document.createElement('div');
     dayEl.classList.add('cal-box');
+
     const dayBox = document.createElement('span');
+
+    //style the date (goal achieved or not)
+    let user = getUserfromLS();
+    const todayDateString = `${j}/${month}/${year}`;
+    if(user.history && user.history[todayDateString])
+        {let dailyAmt ;
+            if(user.history[todayDateString].currentDailyAmount)        //true if the daily amount was modified in the app
+                dailyAmt = user.history[todayDateString].currentDailyAmount;
+            else
+                dailyAmt = user.dailyAmount;
+
+            if(user.history[todayDateString].amountDrank >= dailyAmt)      //goal achieved
+                dayBox.classList.add('achieved');
+        
+            else
+                dayBox.classList.add('not-achieved');
+
+            createTooltip(dayEl,dayBox,user,todayDateString);
+        }
+
     dayEl.appendChild(dayBox);
     dayBox.innerHTML = `${j}`;
     j++;
@@ -31,7 +81,7 @@ export const writeCalendarToDOM = () => {
     while(i<=7-firstDay)
     {   
         const gridCol = firstDay +i-1;
-        i=createDOMelement(i,1,gridCol);
+        i=createDOMelement(i,1,gridCol,month,year);
     }
 
 
@@ -42,7 +92,7 @@ export const writeCalendarToDOM = () => {
     {let i=0;
     while(i<7)
         {
-            j = createDOMelement(j,row,i);
+            j = createDOMelement(j,row,i,month,year);
             if(j > numberOfDaysInCurrMonth)
                 break;
             i++;

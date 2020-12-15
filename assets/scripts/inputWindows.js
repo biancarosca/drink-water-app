@@ -1,3 +1,6 @@
+import {writeCalendarToDOM} from './calendar.js';
+import {addCurentSettingsToDOM} from './updateDOM.js';
+
 export const switchToMainWindow = () => {
     const firstSection = document.querySelector('.start-app');
     firstSection.style.display = 'none';
@@ -5,6 +8,9 @@ export const switchToMainWindow = () => {
     dashboard.style.display='block';
     const body = document.querySelector('body');
     body.style.display= 'block';
+
+    writeCalendarToDOM();
+    addCurentSettingsToDOM();
 }
 
 export const switchToSecondWindow = () => {

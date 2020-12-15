@@ -78,6 +78,7 @@ export const saveNewSettings = () => {
         {
         const newPercentageForToday = parseFloat((user.history[todayDateString].amountDrank * 100 / newDailyAmt).toFixed(0));
         user.history[todayDateString].percentageDrank = newPercentageForToday;
+        user.history[todayDateString].currentDailyAmount = newDailyAmt;
         }   
     }
 

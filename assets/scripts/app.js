@@ -35,7 +35,7 @@ hamburgerEventListeners();
 const saveBtn = document.querySelector('.settings-window .save');
 saveBtn.addEventListener('click',saveNewSettings);
 
-
-addCurentSettingsToDOM();
-
-writeCalendarToDOM();
+if(document.querySelector('.start-app').style.display === 'none')       //if the user already exists
+    {writeCalendarToDOM();
+    addCurentSettingsToDOM();
+    }

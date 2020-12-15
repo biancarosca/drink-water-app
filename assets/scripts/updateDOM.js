@@ -1,5 +1,7 @@
 import {getUserfromLS} from './localStorage.js';
 import {formattedDate} from './currentDate.js';
+import {writeCalendarToDOM} from './calendar.js';
+
 
 
 export const waterProgress = () => {
@@ -27,7 +29,11 @@ export const waterProgress = () => {
     DOMpercentage.innerHTML = `${user.history[todayDateString].percentageDrank}%`;
     }
 
+    writeCalendarToDOM();   //update history
+
    document.querySelector('.dashboard-window .undo').style.pointerEvents = 'initial';
+
+
 }
 
 export const addCurentSettingsToDOM = () => {
