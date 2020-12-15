@@ -16,6 +16,15 @@ const createTooltip = (dayEl,dayBox,user,date) => {
         event.target.parentNode.querySelector('.tooltip').style.display = 'none';
     })
 
+    dayBox.addEventListener('touchenter',function (event) {
+        event.target.parentNode.querySelector('.tooltip').style.display = 'flex';
+    })
+
+    dayBox.addEventListener('touchleave',function(event) {
+        event.target.parentNode.querySelector('.tooltip').style.display = 'none';
+    })
+    
+
     //add text to tooltip
     const amountDrank = user.history[date].amountDrank;
     let targetAmount;
