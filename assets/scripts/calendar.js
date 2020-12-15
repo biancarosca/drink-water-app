@@ -4,26 +4,21 @@ import {getUserfromLS} from './localStorage.js'
 const createTooltip = (dayEl,dayBox,user,date) => {
     //create tooltip
     const tooltip = document.createElement('div');
-    tooltip.classList.add('tooltip');
+    tooltip.classList.add('tooltip','ttp-display-none');
     dayEl.appendChild(tooltip);
 
-    //hover effect
+    //hover effect , working for mobile too
     dayBox.addEventListener('mouseover',function (event) {
-        event.target.parentNode.querySelector('.tooltip').style.display = 'flex';
+        if(event.target.parentNode.querySelector('.tooltip').classList.contains('ttp-display-none'))
+            event.target.parentNode.querySelector('.tooltip').classList.replace('ttp-display-none','ttp-display-flex');
+        else
+            event.target.parentNode.querySelector('.tooltip').classList.replace('ttp-display-flex','ttp-display-none');
     })
 
     dayBox.addEventListener('mouseout',function(event) {
-        event.target.parentNode.querySelector('.tooltip').style.display = 'none';
+        event.target.parentNode.querySelector('.tooltip').classList.replace('ttp-display-flex','ttp-display-none');
     })
 
-    dayBox.addEventListener('touchenter',function (event) {
-        event.target.parentNode.querySelector('.tooltip').style.display = 'flex';
-    })
-
-    dayBox.addEventListener('touchleave',function(event) {
-        event.target.parentNode.querySelector('.tooltip').style.display = 'none';
-    })
-    
 
     //add text to tooltip
     const amountDrank = user.history[date].amountDrank;

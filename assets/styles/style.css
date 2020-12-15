@@ -547,7 +547,6 @@ main .undo:hover {
 
 .tooltip {
   position: absolute;
-  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -573,6 +572,14 @@ main .undo:hover {
 
 .tooltip p {
   margin-bottom: 7px;
+}
+
+.ttp-display-none {
+  display: none;
+}
+
+.ttp-display-flex {
+  display: flex;
 }
 
 .not-achieved {
