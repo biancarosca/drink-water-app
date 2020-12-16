@@ -666,8 +666,8 @@ main .undo:hover {
 
 .statistics-window {
   display: none;
-  grid-template-rows: 5% 15% 25% 15% 20% 20% 5%;
-  grid-template-columns: 3% 3% 25% 7.5% 20% 7.5% 25% 5% 5%;
+  grid-template-rows: 5% 15% 40% 20% 20% 5%;
+  grid-template-columns: 3% 3% 88% 3% 3%;
   height: 100%;
 }
 
@@ -685,6 +685,31 @@ main .undo:hover {
 
 .statistics-window .hamburger:hover {
   transform: scale(1.2);
+}
+
+.statistics-window .pie-container {
+  grid-row: 3/4;
+  grid-column: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.statistics-window .circle-svg {
+  grid-row: 3/span 2;
+  grid-column: 3/4;
+  fill: none;
+  stroke-width: 10px;
+  stroke: #00BBFB;
+  width: 160px;
+  height: 160px;
+}
+
+.statistics-window .circle-svg circle {
+  transform: translate(10px, 10px);
+  stroke-dasharray: 440;
+  stroke-dashoffset: 50;
+  animation: anim linear 5s;
 }
 
 * {

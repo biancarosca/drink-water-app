@@ -20,7 +20,7 @@ export const addWater = () => {
     const numberOfDecimals = countDecimals(user.glassCapacity);
     user.history[todayDateString].amountDrank += user.glassCapacity;
     user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
-    user.history[todayDateString].percentageDrank = parseFloat((user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity).toFixed(0));
+    user.history[todayDateString].percentageDrank = parseFloat((user.percentage*user.history[todayDateString].amountDrank / user.glassCapacity).toFixed(numberOfDecimals));
 
     saveUserToLS(user);
 
@@ -40,7 +40,7 @@ export const undoHandler = (event) => {
         const numberOfDecimals = countDecimals(user.glassCapacity);
         user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
         user.history[todayDateString].percentageDrank -= user.percentage;
-        user.history[todayDateString].percentageDrank = parseFloat(user.history[todayDateString].percentageDrank.toFixed(0));
+        user.history[todayDateString].percentageDrank = parseFloat(user.history[todayDateString].percentageDrank.toFixed(numberOfDecimals));
     }
     else{
         user.history[todayDateString].amountDrank = 0;
@@ -69,14 +69,16 @@ export const saveNewSettings = () => {
     user.dailyAmount = newDailyAmt;
     user.glassCapacity = newGlassCap;
 
-    user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(0)) ;
+    const numberOfDecimals = countDecimals(user.glassCapacity);
+    console.log(numberOfDecimals);
+    user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(numberOfDecimals)) ;
 
     const todayDateString = formattedDate();
     if(user.history)
     {
     if(user.history[todayDateString])
         {
-        const newPercentageForToday = parseFloat((user.history[todayDateString].amountDrank * 100 / newDailyAmt).toFixed(0));
+        const newPercentageForToday = parseFloat((user.history[todayDateString].amountDrank * 100 / newDailyAmt).toFixed(numberOfDecimals));
         user.history[todayDateString].percentageDrank = newPercentageForToday;
         user.history[todayDateString].currentDailyAmount = newDailyAmt;
         }   

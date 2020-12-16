@@ -23,7 +23,8 @@ export const submitDailyAmount = () => {
     else{
         if(input.value.match(regex))
             {user.glassCapacity = parseFloat(input.value);
-            user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(0)) ;
+            const numberOfDecimals = countDecimals(user.glassCapacity);
+            user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(numberOfDecimals)) ;
             saveUserToLS(user);
             switchToMainWindow();
             addCurentSettingsToDOM();
