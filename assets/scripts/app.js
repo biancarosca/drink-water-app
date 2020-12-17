@@ -6,6 +6,7 @@ import {addWater,undoHandler,saveNewSettings} from './updateUser.js';
 import {waterProgress,addCurentSettingsToDOM} from './updateDOM.js';
 import {hamburgerEventListeners} from './hamburgerEvents.js';
 import {writeCalendarToDOM,arrowsEventListeners} from './calendar.js';
+import {computeAverageCompletion,addEvListenersToStats} from './statistics.js';
 
 if (!getUserfromLS())
 {   
@@ -38,6 +39,8 @@ saveBtn.addEventListener('click',saveNewSettings);
 if(document.querySelector('.start-app').style.display === 'none')       //if the user already exists
     {writeCalendarToDOM();
     addCurentSettingsToDOM();
+    computeAverageCompletion(true);
     }
 
+addEvListenersToStats();
 arrowsEventListeners();     //event listeners for calendar arrows

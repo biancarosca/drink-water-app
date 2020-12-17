@@ -1,6 +1,7 @@
 import {switchToMainWindow,switchToSecondWindow} from './inputWindows.js';
 import {saveUserToLS} from './localStorage.js';
 import { addValidationMessage,addCurentSettingsToDOM} from './updateDOM.js';
+import {countDecimals} from './utils.js';
 
 let user = new Object();
 

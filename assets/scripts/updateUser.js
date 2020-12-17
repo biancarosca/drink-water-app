@@ -2,6 +2,7 @@ import {formattedDate} from './currentDate.js';
 import {getUserfromLS,saveUserToLS} from './localStorage.js';
 import {waterProgress,addValidationMessage} from './updateDOM.js';
 import {countDecimals} from './utils.js';
+import {computeAverageCompletion} from './statistics.js';
 
 export const addWater = () => {
     let user = getUserfromLS();
@@ -25,6 +26,7 @@ export const addWater = () => {
     saveUserToLS(user);
 
     waterProgress();
+    computeAverageCompletion();  //update statistics
 
 }
 
@@ -49,6 +51,7 @@ export const undoHandler = (event) => {
 
     saveUserToLS(user);
     waterProgress();
+    computeAverageCompletion();  //update statistics
     
 }
 
@@ -70,7 +73,6 @@ export const saveNewSettings = () => {
     user.glassCapacity = newGlassCap;
 
     const numberOfDecimals = countDecimals(user.glassCapacity);
-    console.log(numberOfDecimals);
     user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(numberOfDecimals)) ;
 
     const todayDateString = formattedDate();
@@ -90,7 +92,9 @@ export const saveNewSettings = () => {
     if(user.history)
         {if(user.history[todayDateString])
             waterProgress();
+            computeAverageCompletion();  //update statistics
         }
+    
 
     addValidationMessage('settings-window','success');
     }

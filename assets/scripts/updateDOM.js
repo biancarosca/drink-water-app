@@ -3,7 +3,6 @@ import {formattedDate} from './currentDate.js';
 import {writeCalendarToDOM} from './calendar.js';
 
 
-
 export const waterProgress = () => {
     const wavePacket = document.querySelector('.wave-container');
     const bottomWater = document.querySelector('.wave-bottom');

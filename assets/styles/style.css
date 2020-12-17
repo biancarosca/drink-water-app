@@ -714,6 +714,7 @@ main .undo:hover {
 }
 
 .statistics-window .pie-title h3 {
+  margin-bottom: 1rem;
   height: fit-content;
   border-bottom: 5px solid #AAE0F2;
 }
@@ -752,22 +753,12 @@ main .undo:hover {
   transform: translate(10px, 10px);
   stroke-dasharray: 440;
   stroke-dashoffset: 440;
-  animation: anim linear 2s forwards;
 }
 
 .statistics-window .circle-svg .circle-under {
   stroke-dashoffset: 0;
   stroke: rgba(196, 196, 196, 0.4);
   animation: none;
-}
-
-@keyframes anim {
-  0% {
-    stroke-dashoffset: 440;
-  }
-  100% {
-    stroke-dashoffset: 50;
-  }
 }
 
 .avg {
@@ -782,14 +773,11 @@ main .undo:hover {
 
 .avg h2, .avg h3 {
   height: fit-content;
+  margin: 0.5rem 0;
 }
 
 .avg h3 {
   border-bottom: 5px solid #AAE0F2;
-}
-
-.avg h2 {
-  margin-top: 1rem;
 }
 
 .weekly-avg {
@@ -814,6 +802,7 @@ main .undo:hover {
     grid-row: 4/5;
   }
   .monthly-avg {
+    padding-top: 1rem;
     grid-row: 5/6;
   }
 }
