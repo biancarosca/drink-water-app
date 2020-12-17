@@ -2,7 +2,7 @@ import {getUserfromLS} from './localStorage.js';
 import {updateDashboardDate} from './currentDate.js';
 import {switchToMainWindow} from './inputWindows.js';
 import {submitDailyAmount} from './inputValuesHandler.js';
-import {addWater,undoHandler,saveNewSettings} from './updateUser.js';
+import {addWater,undoHandler,saveNewSettings,addUntrackedHistoryDays} from './updateUser.js';
 import {waterProgress,addCurentSettingsToDOM} from './updateDOM.js';
 import {hamburgerEventListeners} from './hamburgerEvents.js';
 import {writeCalendarToDOM,arrowsEventListeners} from './calendar.js';
@@ -20,6 +20,7 @@ if (!getUserfromLS())
 else{
     switchToMainWindow();
     waterProgress();
+    addUntrackedHistoryDays();  //if the user did not use the app on some days, they are added to history as 0%
 }
 
 updateDashboardDate();

@@ -1,8 +1,60 @@
-import {formattedDate} from './currentDate.js';
+import {formattedDate,fromStringToNumberMonth,fromNumberToStringMonth, getDate} from './currentDate.js';
 import {getUserfromLS,saveUserToLS} from './localStorage.js';
 import {waterProgress,addValidationMessage} from './updateDOM.js';
 import {countDecimals} from './utils.js';
 import {computeAverageCompletion} from './statistics.js';
+
+
+export const addUntrackedHistoryDays = () => {
+    let user = getUserfromLS();
+
+    let firstRecordedDate = Object.entries(user.history)[0][0].split('/');
+    const firstDay = parseInt(firstRecordedDate[0]);
+    const firstMonth = fromStringToNumberMonth(firstRecordedDate[1]);
+    const firstYear = parseInt(firstRecordedDate[2]);
+    let missingDaysExist;
+
+    let day,month,year;
+    [day,month,year] = getDate();
+    month = fromStringToNumberMonth(month);
+    
+
+    if ((year > firstYear) || (year === firstYear && month > firstMonth) || 
+    (year === firstYear && month === firstMonth || day > firstDay))
+        missingDaysExist = true;
+        
+
+    while(missingDaysExist)
+    {   //go from current day to first day in current month
+        let i = day;
+        while (i > 0)
+            {let stringMonth = fromNumberToStringMonth(month);
+            let stringDate = `${i}/${stringMonth}/${year}`;
+            if (!user.history[stringDate])
+                {user.history[stringDate] = {};
+                user.history[stringDate].amountDrank = 0;
+                user.history[stringDate].percentageDrank = 0;
+                saveUserToLS(user);
+                }
+            else 
+                {missingDaysExist = false;
+                break;
+                }
+            i--;
+            }
+        if(missingDaysExist)
+            {//go to previous month
+            if(month ===0)
+                {year--;
+                month = 11;
+                }
+            else
+               month--;
+            day = new Date(year,month+1,0).getDate();     //number of days in the following month
+            }
+    }
+
+}
 
 export const addWater = () => {
     let user = getUserfromLS();
