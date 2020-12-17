@@ -317,7 +317,6 @@ main .undo:hover {
   grid-column: 5/6;
   grid-row: 5/6;
   justify-self: center;
-  align-self: center;
   font-size: 2.2rem;
 }
 
@@ -386,12 +385,14 @@ main .undo:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  grid-row: 3/span 2;
+  grid-row: 3/4;
   grid-column: 3/span 5;
 }
 
 .settings-container h1 {
+  margin-bottom: 4rem;
   text-align: center;
+  height: fit-content;
 }
 
 .settings-container .input-container {
@@ -429,6 +430,22 @@ main .undo:hover {
 @media screen and (max-width: 750px) {
   .back-btn {
     margin-left: 30px;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .save {
+    grid-row: 4/5;
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-height: 1200px) {
+  .settings-window {
+    grid-template-rows: 5% 15% 15% 15% 20% 20% 15%;
+  }
+  .save {
+    margin-top: 3rem;
   }
 }
 
@@ -477,10 +494,9 @@ main .undo:hover {
 
 .history-window .cal-header .date-nav i {
   font-size: 2rem;
-  color: #00BBFB;
+  color: #d7e4e9;
   margin: 0 10px;
   cursor: pointer;
-  border: 1px 0 1px 0;
 }
 
 .history-window .cal-header .date-nav .icon {
@@ -666,8 +682,8 @@ main .undo:hover {
 
 .statistics-window {
   display: none;
-  grid-template-rows: 5% 15% 40% 20% 20% 5%;
-  grid-template-columns: 3% 3% 88% 3% 3%;
+  grid-template-rows: 5% 15% 30% 7% 15% 15%;
+  grid-template-columns: 3% 3% 44% 44% 3% 3%;
   height: 100%;
 }
 
@@ -687,29 +703,119 @@ main .undo:hover {
   transform: scale(1.2);
 }
 
-.statistics-window .pie-container {
-  grid-row: 3/4;
-  grid-column: 3/4;
+.statistics-window .pie-title {
+  animation: fadeIn 0.5s ease-in;
+  grid-row: 2/3;
+  grid-column: 3/span 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  align-items: flex-end;
+}
+
+.statistics-window .pie-title h3 {
+  height: fit-content;
+  border-bottom: 5px solid #AAE0F2;
+}
+
+.statistics-window .pie-container {
+  grid-row: 3/4;
+  grid-column: 3/span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.statistics-window .pie-container .percentage {
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  z-index: 1;
+  font-size: 2rem;
 }
 
 .statistics-window .circle-svg {
   grid-row: 3/span 2;
-  grid-column: 3/4;
+  grid-column: 3/span 2;
   fill: none;
   stroke-width: 10px;
-  stroke: #00BBFB;
+  stroke: url(#blue-grad);
   width: 160px;
   height: 160px;
+  transform: rotate(-90deg);
+  stroke-linecap: round;
 }
 
 .statistics-window .circle-svg circle {
   transform: translate(10px, 10px);
   stroke-dasharray: 440;
-  stroke-dashoffset: 50;
-  animation: anim linear 5s;
+  stroke-dashoffset: 440;
+  animation: anim linear 2s forwards;
+}
+
+.statistics-window .circle-svg .circle-under {
+  stroke-dashoffset: 0;
+  stroke: rgba(196, 196, 196, 0.4);
+  animation: none;
+}
+
+@keyframes anim {
+  0% {
+    stroke-dashoffset: 440;
+  }
+  100% {
+    stroke-dashoffset: 50;
+  }
+}
+
+.avg {
+  animation: fadeIn 0.5s ease-in;
+  grid-row: 5/6;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.avg h2, .avg h3 {
+  height: fit-content;
+}
+
+.avg h3 {
+  border-bottom: 5px solid #AAE0F2;
+}
+
+.avg h2 {
+  margin-top: 1rem;
+}
+
+.weekly-avg {
+  margin-left: 2rem;
+  grid-column: 3/4;
+}
+
+.monthly-avg {
+  margin-right: 2rem;
+  grid-column: 4/5;
+}
+
+@media screen and (max-width: 520px) {
+  .statistics-window {
+    grid-template-rows: 5% 15% 30% 15% 15% 15%;
+  }
+  .avg {
+    grid-column: 3/span 2;
+    margin: 10px;
+  }
+  .weekly-avg {
+    grid-row: 4/5;
+  }
+  .monthly-avg {
+    grid-row: 5/6;
+  }
 }
 
 * {

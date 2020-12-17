@@ -19,8 +19,8 @@ const nextMonth = () => {
 }
 
 export const arrowsEventListeners = () => {
-    document.querySelector('.cal-header .fa-caret-left').addEventListener(('click'),prevMonth);
-    document.querySelector('.cal-header .fa-caret-right').addEventListener(('click'),nextMonth);
+    document.querySelector('.cal-header .fa-angle-left').addEventListener(('click'),prevMonth);
+    document.querySelector('.cal-header .fa-angle-right').addEventListener(('click'),nextMonth);
 } 
 
 const isDeviceTouchScreen = () =>{

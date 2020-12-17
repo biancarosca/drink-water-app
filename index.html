@@ -77,9 +77,9 @@
         <div class="cal-header">
             <h1>My History</h1>
             <div class="date-nav">
-                <span class="icon"><i class="fas fa-caret-left"></i></span>
+                <span class="icon"><i class="fas fa-angle-left"></i></span>
                 <h2></h2>
-                <span class="icon"><i class="fas fa-caret-right"></i></span>
+                <span class="icon"><i class="fas fa-angle-right"></i></span>
             </div>
         </div>
         <div class="cal-day sunday">Sun</div>
@@ -111,14 +111,29 @@
                 <li class="settings">Settings</li>
             </ul>
         </div>
-    
-        <!-- <div class="circle">
-            <div class="inner-circ"></div>
-        </div> -->
+
+        <div class="pie-title"><h3>Average completion</h3></div>
         <div class="pie-container">
             <svg class="circle-svg">
+                <defs>
+                    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"   stop-color="#bce4f2"></stop>
+                        <stop offset="35%"  stop-color="#8fd8f1"></stop>
+                        <stop offset="100%" stop-color="#00d4ff"></stop>
+                    </linearGradient>
+                </defs>
+                <circle class="circle-under" cx="70" cy="70"r="70"></circle>
                 <circle cx="70" cy="70"r="70"></circle>
             </svg>
+            <div class="percentage">80%</div>
+        </div>
+        <div class="avg weekly-avg">
+            <h3>Weekly average</h3>
+            <h2>1.95 L /day</h2>
+        </div>
+        <div class="avg monthly-avg">
+            <h3>Monthly average</h3>
+            <h2>1.59 L /day</h2>
         </div>
         <i class="fas fa-bars hamburger"></i>
         <i class="dashboard fas fa-long-arrow-alt-left back-btn"></i>

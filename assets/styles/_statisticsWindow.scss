@@ -3,8 +3,8 @@
 
 .statistics-window{
     display: none;
-    grid-template-rows: 5% 15% 40% 20% 20% 5%;
-    grid-template-columns:3% 3% 88% 3% 3%;
+    grid-template-rows: 5% 15% 30% 7% 15% 15%;
+    grid-template-columns:3% 3% 44% 44% 3% 3%;
     height: 100%;
 
     .hamburger{
@@ -13,52 +13,116 @@
         grid-column: 1/2;
     }
 
-    // .inner-circ{
-    //    width: 400px;
-    //    height: 400px;
-    //    background-color:red;
-    //    z-index :1;
-    //    border-radius: 100%;
-    // }
-
-    // .circle{
-    //     grid-row : 3/4;
-    //     grid-column: 3/4;
-    //     height: 400px;
-    //     width: 50px;
-    //     background-color:$background-color;
-    //     border-radius: 100%;
-    //     border-style: solid;
-    //     border-width: 20px;
-    //     border-color:white transparent transparent transparent ;
-    //     animation : anim linear 5s;
-    // }
-    
+    .pie-title{
+        @include fadeAnim;
+        grid-row: 2/3;
+        grid-column: 3/span 2;
+        @include flex-center;
+        align-items: flex-end;
+        h3{
+            height: fit-content;
+            border-bottom : 5px solid #AAE0F2;
+        }
+    }
     .pie-container{
         grid-row: 3/4;
-        grid-column: 3/4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        grid-column: 3/span 2;
+        @include flex-center;
+        flex-direction: column;
+        position: relative;
+
+        .percentage{
+            height: fit-content;
+            width: fit-content;
+            position: absolute;
+            z-index: 1;
+            font-size: 2rem;
+        }
+
     }
 
     .circle-svg{
         grid-row : 3/span 2;
-        grid-column: 3/4;
+        grid-column: 3/span 2;
         fill:none;
         stroke-width: 10px;
-        stroke: $water-color;
+        stroke: url(#blue-grad);
         width: 160px;
         height: 160px;
-
+        transform: rotate(-90deg);
+        stroke-linecap: round;
+    
         
         circle{
             transform: translate(10px,10px) ;
             stroke-dasharray:440;
-            stroke-dashoffset: 50;
-            animation: anim linear 5s;
+            stroke-dashoffset: 440;
+            animation: anim linear 2s forwards;
+        }
+
+        .circle-under{
+            stroke-dashoffset: 0;
+            stroke: rgba(196, 196, 196,0.4);
+            animation:none
         }
     }
 
     
+}
+
+@keyframes anim {
+    0%{
+        stroke-dashoffset: 440;
+    }
+    100%{
+        stroke-dashoffset: 50;
+    }
+}
+
+.avg{
+    @include fadeAnim;
+    grid-row: 5/6;
+    margin-left: 10px;
+    @include flex-center;
+    flex-direction: column;
+
+    h2,h3{
+        height: fit-content;
+    }
+
+    h3{
+        border-bottom : 5px solid #AAE0F2;
+    }
+
+    h2{
+        margin-top: 1rem;
+    }
+}
+
+.weekly-avg{
+    margin-left: 2rem;
+    grid-column: 3/4;
+}
+
+.monthly-avg{
+    margin-right: 2rem;
+    grid-column: 4/5;
+}
+
+@media screen and (max-width:520px) {
+    .statistics-window{
+        grid-template-rows: 5% 15% 30% 15% 15% 15%;
+    }
+    .avg{
+        grid-column: 3/span 2;
+        margin: 10px;
+    }
+
+    .weekly-avg{
+
+        grid-row:4/5;
+    }
+    .monthly-avg{
+        grid-row:5/6;
+    }
 }

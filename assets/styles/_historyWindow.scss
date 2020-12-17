@@ -26,12 +26,10 @@
             @include flex-center;
             i{
                 font-size: 2rem;
-                color: $water-color;
+                color: #d7e4e9;
                 margin: 0 10px;
                 cursor: pointer;
-                border: 1px 0 1px 0;
             }
-            
             .icon{
                 height:fit-content;
             }
@@ -190,3 +188,4 @@
         height: fit-content;
     }
 }
+
