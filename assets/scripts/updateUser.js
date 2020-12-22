@@ -7,53 +7,61 @@ import {computeAverageCompletion} from './statistics.js';
 
 export const addUntrackedHistoryDays = () => {
     let user = getUserfromLS();
+    if(user.history){
+        let firstRecordedDate = user.startingDate.split('/');    
+        const firstDay = parseInt(firstRecordedDate[0]);
+        const firstMonth = fromStringToNumberMonth(firstRecordedDate[1]);
+        const firstYear = parseInt(firstRecordedDate[2]);
+        let missingDaysExist;
 
-    let firstRecordedDate = Object.entries(user.history)[0][0].split('/');
-    const firstDay = parseInt(firstRecordedDate[0]);
-    const firstMonth = fromStringToNumberMonth(firstRecordedDate[1]);
-    const firstYear = parseInt(firstRecordedDate[2]);
-    let missingDaysExist;
-
-    let day,month,year;
-    [day,month,year] = getDate();
-    month = fromStringToNumberMonth(month);
-    
-
-    if ((year > firstYear) || (year === firstYear && month > firstMonth) || 
-    (year === firstYear && month === firstMonth || day > firstDay))
-        missingDaysExist = true;
+        let day,month,year;
+        [day,month,year] = getDate();
+        month = fromStringToNumberMonth(month);
         
 
-    while(missingDaysExist)
-    {   //go from current day to first day in current month
-        let i = day;
-        while (i > 0)
-            {let stringMonth = fromNumberToStringMonth(month);
-            let stringDate = `${i}/${stringMonth}/${year}`;
-            if (!user.history[stringDate])
-                {user.history[stringDate] = {};
-                user.history[stringDate].amountDrank = 0;
-                user.history[stringDate].percentageDrank = 0;
-                saveUserToLS(user);
-                }
-            else 
-                {missingDaysExist = false;
-                break;
-                }
-            i--;
-            }
-        if(missingDaysExist)
-            {//go to previous month
-            if(month ===0)
-                {year--;
-                month = 11;
-                }
-            else
-               month--;
-            day = new Date(year,month+1,0).getDate();     //number of days in the following month
-            }
-    }
+        if ((year > firstYear) || (year === firstYear && month > firstMonth) || 
+        (year === firstYear && month === firstMonth || day > firstDay))
+            missingDaysExist = true;
+            
 
+        while(missingDaysExist)
+        {   //go from current day to first day in current month
+            let i = day;
+            while (i > 0)
+                {let stringMonth = fromNumberToStringMonth(month);
+                let stringDate = `${i}/${stringMonth}/${year}`;
+                if (!user.history[stringDate])
+                    {user.history[stringDate] = {};
+                    user.history[stringDate].amountDrank = 0;
+                    user.history[stringDate].percentageDrank = 0;
+                    
+                    //if a new week began since the weekly average updated
+                    console.log(new Date(year,month,i).getDay());
+                    if(new Date(year,month,i).getDay() === 0)
+                        {user.statistics.weeklyAverage = 0;
+                        user.statistics.weeklyAverageSum = 0;   
+                        }
+
+                    saveUserToLS(user);
+                    }
+                else 
+                    {missingDaysExist = false;
+                    break;
+                    }
+                i--;
+                }
+            if(missingDaysExist)
+                {//go to previous month
+                if(month ===0)
+                    {year--;
+                    month = 11;
+                    }
+                else
+                month--;
+                day = new Date(year,month+1,0).getDate();     //number of days in the following month
+                }
+        }
+    }
 }
 
 export const addWater = () => {
@@ -87,24 +95,24 @@ export const undoHandler = (event) => {
     event.target.style.pointerEvents = 'none';
 
     let todayDateString = formattedDate();
-    let user = getUserfromLS();  
-    if(user.history[todayDateString].amountDrank - user.glassCapacity >=0)
-    {
-        user.history[todayDateString].amountDrank -= user.glassCapacity;
-        const numberOfDecimals = countDecimals(user.glassCapacity);
-        user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
-        user.history[todayDateString].percentageDrank -= user.percentage;
-        user.history[todayDateString].percentageDrank = parseFloat(user.history[todayDateString].percentageDrank.toFixed(numberOfDecimals));
-    }
-    else{
-        user.history[todayDateString].amountDrank = 0;
-        user.history[todayDateString].percentageDrank = 0;
-    }
+    let user = getUserfromLS();
+    if(user.history){
+        if(user.history[todayDateString].amountDrank - user.glassCapacity >=0){
+            user.history[todayDateString].amountDrank -= user.glassCapacity;
+            const numberOfDecimals = countDecimals(user.glassCapacity);
+            user.history[todayDateString].amountDrank = parseFloat(user.history[todayDateString].amountDrank.toFixed(numberOfDecimals));
+            user.history[todayDateString].percentageDrank -= user.percentage;
+            user.history[todayDateString].percentageDrank = parseFloat(user.history[todayDateString].percentageDrank.toFixed(numberOfDecimals));
+            }
+        else{
+            user.history[todayDateString].amountDrank = 0;
+            user.history[todayDateString].percentageDrank = 0;
+        }
 
-    saveUserToLS(user);
-    waterProgress();
-    computeAverageCompletion();  //update statistics
-    
+        saveUserToLS(user);
+        waterProgress();
+        computeAverageCompletion();  //update statistics
+    }
 }
 
 

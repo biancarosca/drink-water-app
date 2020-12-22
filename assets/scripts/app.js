@@ -1,5 +1,5 @@
 import {getUserfromLS} from './localStorage.js';
-import {updateDashboardDate} from './currentDate.js';
+import {updateDashboardDate,formattedDate} from './currentDate.js';
 import {switchToMainWindow} from './inputWindows.js';
 import {submitDailyAmount} from './inputValuesHandler.js';
 import {addWater,undoHandler,saveNewSettings,addUntrackedHistoryDays} from './updateUser.js';
@@ -40,8 +40,14 @@ saveBtn.addEventListener('click',saveNewSettings);
 if(document.querySelector('.start-app').style.display === 'none')       //if the user already exists
     {writeCalendarToDOM();
     addCurentSettingsToDOM();
-    computeAverageCompletion(true);
-    }
 
+    let user = getUserfromLS();
+    if(user.history)
+        {if(formattedDate != user.statistics.calculatedOnDate)   //the date has changed, values need update
+            computeAverageCompletion();
+        else
+            computeAverageCompletion(false);        //the value is not changed, only DOM is rendered
+        }
+    }
 addEvListenersToStats();
 arrowsEventListeners();     //event listeners for calendar arrows

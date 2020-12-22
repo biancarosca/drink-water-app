@@ -2,6 +2,7 @@ import {switchToMainWindow,switchToSecondWindow} from './inputWindows.js';
 import {saveUserToLS} from './localStorage.js';
 import { addValidationMessage,addCurentSettingsToDOM} from './updateDOM.js';
 import {countDecimals} from './utils.js';
+import {formattedDate} from './currentDate.js';
 
 let user = new Object();
 
@@ -26,6 +27,11 @@ export const submitDailyAmount = () => {
             {user.glassCapacity = parseFloat(input.value);
             const numberOfDecimals = countDecimals(user.glassCapacity);
             user.percentage = parseFloat( (user.glassCapacity * 100 / user.dailyAmount).toFixed(numberOfDecimals)) ;
+
+            //add user's first day to storage
+            const todayDateString = formattedDate();
+            user.startingDate = todayDateString;
+
             saveUserToLS(user);
             switchToMainWindow();
             addCurentSettingsToDOM();
