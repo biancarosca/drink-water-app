@@ -36,7 +36,7 @@ export const addUntrackedHistoryDays = () => {
                     user.history[stringDate].percentageDrank = 0;
                     
                     //if a new week began since the weekly average updated
-                    console.log(new Date(year,month,i).getDay());
+                    user.statistics.currentDayAmount = 0;
                     if(new Date(year,month,i).getDay() === 0)
                         {user.statistics.weeklyAverage = 0;
                         user.statistics.weeklyAverageSum = 0;   

@@ -120,6 +120,7 @@ const createDOMelement = (j,row,i,month,year) => {
 
 
 export const writeCalendarToDOM = (monthDirection = 0) => {
+    clearPreviousMonthDOM();
     let day,month, year;
     [day,month,year] = getDate();
     const monthAndYearEl = document.querySelector('.history-window h2');

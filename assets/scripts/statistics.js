@@ -3,8 +3,7 @@ import {formattedDate,getDate} from './currentDate.js';
 
 
 /*Todo:
-1. Fix Weekly Average (every time the function is called , it's undefined -> reinitialized with 0 )
-2. Due to approximations -> percentage 99% , but should be 100%
+1. Due to approximations -> percentage 99% , but should be 100%
 
 */
 
@@ -20,7 +19,7 @@ const userIsInFirstWeek = () => {
     //calculate number of days since start
     const numDays = day - userStartingDay +1 ;
     
-    if ( year === userStartingYear && month === userStartingMonth && day === userStartingDay)
+    if ( year === userStartingYear && month === userStartingMonth && day - userStartingDay <=6)
             return numDays;
     else
         return 0;
@@ -36,17 +35,15 @@ const computeWeeklyAverage = () => {
     else
         currWeekDay = new Date().getDay();
     
-    if (!user.statistics.weeklyAverage || currWeekDay === 0 )
-        {user.statistics.weeklyAverage = 0;
-        user.statistics.weeklyAverageSum = 0;
-
-        }
-
     const todayStringDate = formattedDate();
-    user.statistics.weeklyAverageSum += user.history[todayStringDate].amountDrank;
+    //remove the previous value from the sum, add the updated one
+    user.statistics.weeklyAverageSum -= user.statistics.currentDayAmount;
+    user.statistics.currentDayAmount = user.history[todayStringDate].amountDrank;
+    user.statistics.weeklyAverageSum += user.statistics.currentDayAmount;
+    
     user.statistics.weeklyAverageSum = parseFloat(user.statistics.weeklyAverageSum.toFixed(1));     //fixed to 1 decimal 
     user.statistics.weeklyAverage = parseFloat((user.statistics.weeklyAverageSum / (currWeekDay+1) ).toFixed(1));
-    
+
     saveUserToLS(user);
     
 }
@@ -72,7 +69,13 @@ const computeMonthlyAverage = () => {
 
 export const computeAverageCompletion = (valueIsChanged = true) => {
     let user = getUserfromLS();
-    user.statistics = {};
+    if(!user.statistics)
+    {user.statistics = {};
+    user.statistics.weeklyAverage = 0;
+    user.statistics.weeklyAverageSum = 0;
+    user.statistics.currentDayAmount = 0;
+    }
+
     if (user.history && valueIsChanged)    
         {let percentagesDrankSum = 0;
         let numberOfDays = Object.entries(user.history).length;
