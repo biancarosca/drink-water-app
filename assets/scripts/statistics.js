@@ -2,10 +2,6 @@ import {getUserfromLS,saveUserToLS} from './localStorage.js';
 import {formattedDate,getDate} from './currentDate.js';
 
 
-/*Todo:
-1. Due to approximations -> percentage 99% , but should be 100%
-
-*/
 
 const userIsInFirstWeek = () => {
     let user = getUserfromLS();
